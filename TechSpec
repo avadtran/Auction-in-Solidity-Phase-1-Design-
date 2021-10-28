@@ -1,0 +1,30 @@
+
+1. Theme (viable to code)
+
+1a. User specific items
+- double balance;
+- void createAuction (takes you to 3);
+
+2. Dashboard/interface
+- String search;
+- ArrayList<Auctions> matchSearch; 
+- ArrayList<Auctions> sortedSearch (sorts from highestBid = low to highestBid = high);
+
+3. Setting up Auction
+- double startingPrice (only accessed by owner of auction upon conception);
+- double hiddenGoalPrice (only accessed by owner of auction upon conception);
+- boolean randomClosingTime;
+- userAuctionOwner;
+- int blocksMinedBeforeEnding (only accessed by owner of auction upon conception, not used if randomClosingTime = true);
+
+4. Bidding
+- double highestBid;
+- user userWithHighestBid;
+- void changeHighestBid;
+- int generateClosingTime (run after every bid if randomClosingTime = true);
+- boolean reachedGoalPrice (checked at every bid);
+- int blockCountdown (starts at blocksMinedBeforeEnding, will decrease each time a block is mined until it reaches 0, refreshes to blocksMinedBeforeEnding at every bid);
+- boolean auctionEnded (true if blockCountdown = 0 or reachedGoalPrice = true, false otherwise);
+- void transferFunds (from userWithHighestBid --> auctionOwner if auctionEnded = true);
+
+
